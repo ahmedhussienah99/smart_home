@@ -1,0 +1,10 @@
+#ifndef KEYPAD_INTERFACE_H_INCLUDED
+#define KEYPAD_INTERFACE_H_INCLUDED
+
+
+
+
+void HKEYPAD_VidInit();
+char HkEYPAD_u8GetPress();
+
+#endif // KEYPAD_INTERFACE_H_INCLUDED
