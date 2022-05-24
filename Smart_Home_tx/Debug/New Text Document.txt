@@ -1,0 +1,143 @@
+
+
+#include TYPES.h
+
+#include RCC_INTERFACE.h
+#include GPIO_INTERFACE.h
+#include SPI_INTERFACE.h
+#include LCD_INTERFACE.h
+#include KEYPAD_INTERFACE.h
+
+int main ( void ){
+	u8 LOC_u8NewData  ;
+	char x=0xff;
+	MRCC_VidInit();
+	MRCC_VidEnablePeripheralClock( APB2_BUS , GPIOA_RCC );
+	MRCC_VidEnablePeripheralClock( APB2_BUS , GPIOB_RCC );
+	MRCC_VidEnablePeripheralClock( APB2_BUS , SPI1_RCC  );
+
+
+
+	HLCD_VidInit();
+	HKEYPAD_VidInit();
+	u8 room;
+	u8 control;
+	u8 on_off;
+	u8 back;
+	u8 first=0;
+	u8 counter=0;
+	HLCD_VidClearScreen();
+	HLCD_VidWriteString(HelloSmartHOME);
+	main_VidDelay();
+	HLCD_VidClearScreen();
+
+	while(1){
+	if(first==0){
+	HLCD_VidWriteString(Choos ur Mode);
+	HLCD_VidShift(1,2);
+	HLCD_VidWriteString(Admin0);
+	HLCD_VidShift(8,2);
+	HLCD_VidWriteString(Guset1);
+	main_VidDelay();
+	main_VidDelay();
+	}
+	first=1;
+	
+	MGPIO_VidSetPinDirection(GPIOB,0,INPUT_PULLUP_PULLDOWN);
+	MGPIO_VidSetPinValue(GPIOB,0,1);
+	MGPIO_VidSetPinDirection(GPIOB,1,OUTPUT_SPEED_2MHZ_PP);
+
+	u8 adminpass[4];
+	HKEYPAD_VidDelay();
+	x=HkEYPAD_u8GetPress();
+
+	first=0;
+	counter=0;
+	while(counter1){
+	while(1){
+		if(x=='0'){		choose admin mode
+			HLCD_VidClearScreen();
+			HLCD_VidWriteString(WelcomeADMINMode);
+			main_VidDelay();
+			HLCD_VidClearScreen();
+			if(first==0){
+			HLCD_VidWriteString(Control Room);
+			HLCD_VidShift(1,2);
+			HLCD_VidWriteString(Room(1234);
+			}
+			first=1;
+			back=HkEYPAD_u8GetPress();
+
+			HKEYPAD_VidDelay();
+			room=HkEYPAD_u8GetPress();
+			if(room=='5'){	first=1; break;}
+			if(room=='1'){
+			HLCD_VidClearScreen();
+			while(1){
+
+						room=0;
+						HLCD_VidWriteString(Welcome Room1);
+						HLCD_VidShift(1,2);
+						HLCD_VidWriteString(LIGHT1AIR2TV3);
+						while(1){
+						HKEYPAD_VidDelay();
+						control=HkEYPAD_u8GetPress();
+						if(control=='1'){
+							control=0;
+							HLCD_VidClearScreen();
+							HLCD_VidWriteString(LIGHT-ON1OFF0);
+							while(1){
+							HKEYPAD_VidDelay();
+							on_off=HkEYPAD_u8GetPress();
+							}
+						}
+						if(control=='2'){
+							control=0;
+							HLCD_VidClearScreen();
+							HLCD_VidWriteString(Air-ON1OFF0);
+							while(1){
+							HKEYPAD_VidDelay();
+							on_off=HkEYPAD_u8GetPress();
+							}
+						}
+						if(control=='3'){
+							control=0;
+							HLCD_VidClearScreen();
+							HLCD_VidWriteString(TV-ON1OFF2);
+							while(1){
+							HKEYPAD_VidDelay();
+							on_off=HkEYPAD_u8GetPress();
+							if(on_off=='1'){
+								on_off=0;
+							}
+							if(on_off=='2'){
+								on_off=0;
+							}
+
+							}
+						}
+						}
+				}
+
+			}
+
+		HKEYPAD_VidDelay();
+
+
+
+
+
+
+
+
+
+	}
+
+
+}
+	counter++;
+	}
+
+	}
+	return 0 ;
+}

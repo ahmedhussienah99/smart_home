@@ -1,0 +1,8 @@
+LCD_PROG.c:12:6:HLCD_VidDelay	16	static
+LCD_PROG.c:22:6:main_VidDelay	16	static
+LCD_PROG.c:44:6:HLCD_VidWriteCommond	16	static
+LCD_PROG.c:62:6:HLCD_VidInit	8	static
+LCD_PROG.c:96:6:HLCD_VidWriteChar	16	static
+LCD_PROG.c:115:6:HLCD_VidWriteString	16	static
+LCD_PROG.c:123:6:HLCD_VidClearScreen	8	static
+LCD_PROG.c:128:6:HLCD_VidShift	16	static
