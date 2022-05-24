@@ -1,0 +1,3 @@
+KEYPAD_PROG.c:13:6:HKEYPAD_VidDelay	16	static
+KEYPAD_PROG.c:24:6:HKEYPAD_VidInit	8	static
+KEYPAD_PROG.c:47:6:HkEYPAD_u8GetPress	48	static
