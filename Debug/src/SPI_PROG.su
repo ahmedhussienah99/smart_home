@@ -1,4 +1,0 @@
-SPI_PROG.c:17:6:MSPI_VidInit	4	static
-SPI_PROG.c:104:4:MSPI1_VidSendDataU8	16	static
-SPI_PROG.c:114:6:MSPI1_VidSetCallBack	16	static
-SPI_PROG.c:120:6:SPI1_IRQHandler	8	static
